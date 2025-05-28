@@ -4,7 +4,6 @@
   "description": "Kinesis Video Producer C library with optional OpenSSL, mbedtls, curl, and libwebsockets support.",
   "dependencies": [
     "openssl",
-    "mbedtls",
     "curl",
     "libwebsockets",
     "zlib",

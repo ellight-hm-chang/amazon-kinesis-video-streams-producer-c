@@ -67,9 +67,6 @@ endif()
 find_package(PkgConfig REQUIRED)
 
 if(BUILD_TEST)
-    if (WIN32 AND NOT GTest_DIR)
-        set(GTest_DIR $(CMAKE_PREFIX_PATH)/share/gtest)
-    endif()
   find_package(GTest CONFIG REQUIRED)
 endif()
 ############# Check system for kvspic #############
