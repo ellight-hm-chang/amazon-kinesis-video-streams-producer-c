@@ -7,7 +7,8 @@ param(
     [string]$toolchainFile = "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
 )
 
-$installPrefix = Join-Path $installPath "producer"
+$installPrefixDebug = Join-Path $installPath "Debug/producer"
+$installPrefixRelease = Join-Path $installPath "Release/producer"
 $buildDir = "build"
 
 $env:VCPKG_DEFAULT_TRIPLET = $vcpkgTriplet
@@ -21,9 +22,18 @@ Push-Location $buildDir
 
 cmake -G "Visual Studio 17 2022" `
     -DBUILD_TEST=TRUE `
-    -DCMAKE_BUILD_TYPE=Release `
     -DCMAKE_TOOLCHAIN_FILE="$toolchainFile" `
-    -DCMAKE_INSTALL_PREFIX="$installPrefix" `
+    -DCMAKE_INSTALL_PREFIX="$installPrefixDebug" `
+    -DBUILD_COMMON_LWS=TRUE `
+    -DBUILD_COMMON_CURL=TRUE `
+    ..
+
+cmake --build . --config Debug --target install
+
+cmake -G "Visual Studio 17 2022" `
+    -DBUILD_TEST=TRUE `
+    -DCMAKE_TOOLCHAIN_FILE="$toolchainFile" `
+    -DCMAKE_INSTALL_PREFIX="$installPrefixRelease" `
     -DBUILD_COMMON_LWS=TRUE `
     -DBUILD_COMMON_CURL=TRUE `
     ..
