@@ -23,7 +23,6 @@ cmake -G "Visual Studio 17 2022" `
     -DBUILD_TEST=TRUE `
     -DCMAKE_BUILD_TYPE=Release `
     -DCMAKE_TOOLCHAIN_FILE="$toolchainFile" `
-    -DCMAKE_GENERATOR_PLATFORM=x64 `
     -DCMAKE_INSTALL_PREFIX="$installPrefix" `
     -DBUILD_COMMON_LWS=TRUE `
     -DBUILD_COMMON_CURL=TRUE `
