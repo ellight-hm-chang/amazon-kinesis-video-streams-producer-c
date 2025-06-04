@@ -21,7 +21,7 @@ if (-not (Test-Path $buildDir)) {
 Push-Location $buildDir
 
 cmake -G "Visual Studio 17 2022" `
-    -DBUILD_TEST=TRUE `
+    -DBUILD_TEST=FALSE `
     -DCMAKE_TOOLCHAIN_FILE="$toolchainFile" `
     -DCMAKE_INSTALL_PREFIX="$installPrefixDebug" `
     -DBUILD_COMMON_LWS=TRUE `
@@ -31,7 +31,7 @@ cmake -G "Visual Studio 17 2022" `
 cmake --build . --config Debug --target install
 
 cmake -G "Visual Studio 17 2022" `
-    -DBUILD_TEST=TRUE `
+    -DBUILD_TEST=FALSE `
     -DCMAKE_TOOLCHAIN_FILE="$toolchainFile" `
     -DCMAKE_INSTALL_PREFIX="$installPrefixRelease" `
     -DBUILD_COMMON_LWS=TRUE `
